@@ -1,0 +1,67 @@
+
+    html, body {
+        margin: 0 auto;
+        background-color: black;
+    }
+
+    .container {
+        width: 90%;
+        border: 1px solid wheat;
+        position: absolute;
+        background-color: rgb(20, 20, 20);
+        left: 50%;
+        transform: translate(-50%, 0%);
+    }
+
+    .poster {
+        height: 500px;
+        width: 333px;
+        background-size: cover;
+        display: inline-block;
+    }
+
+    .information {
+        color: bisque;
+        font-size: 20px;
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    button {
+        margin-bottom: 20px;
+        margin-right: 20px;
+    }
+
+    .posterdownload {
+        width: 150px;
+        height: 50px;
+        border-radius: 5px;
+        background-color: forestgreen;
+        color: white;
+        border: none;
+    }
+
+    .trailerdownload {
+        width: 150px;
+        height: 50px;
+        border-radius: 5px;
+        background-color: rgb(57, 176, 223);
+        color: white;
+        border: none;
+    }
+
+    .posterdownload:hover {
+        cursor: pointer;
+        background-color: rgb(40, 161, 40);
+    }
+
+    .trailerdownload:hover {
+        cursor: pointer;
+        background-color: rgb(92, 200, 243);
+    }
+
+    
