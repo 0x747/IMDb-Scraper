@@ -29,6 +29,8 @@ movie.scrape("https://www.imdb.com/title/tt5108870/?ref_=fn_al_tt_1")
 > Keywords: vampire, based on comic, marvel comics, superhero, blood
 ```
 
+![Command Line Interface](/assets/console.png "Terminal")
+
 ## Attributes
 
 |  **Attribute** |**Data type**|
