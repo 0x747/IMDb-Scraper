@@ -295,5 +295,5 @@ class IMDb_Scraper():
         </body>
         </html>
         """
-        html_file = open("../index.html", "w")
+        html_file = open("index.html", "w")
         html_file.write(raw_html) 
