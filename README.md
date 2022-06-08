@@ -3,8 +3,8 @@ A simple webscraper which can extract metadata from a movie or show's IMDb page
 
 ## Attributes
 
-|      Name      |  Data type  |
-|:--------------:|:-----------:|
+|  **Attribute** |**Data type**|
+|:-------------- |:-----------:|
 | title          | str         |
 | original_title | str         |
 | title_type     | str         |
@@ -27,4 +27,7 @@ A simple webscraper which can extract metadata from a movie or show's IMDb page
 | writers        | list        |
 | keywords       | list        |
 
+## Functions
 
+### format_runtime(int)
+Converts seconds to equivalent hours and minutes and formats them into a string, which is returned. For example `format_runtime(5570)` returns `1h 32m`
