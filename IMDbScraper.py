@@ -217,6 +217,45 @@ class IMDb_Scraper():
             self.keywords = metadata["keywords"] = []
             pass
 
+        # Countries of Origin
+        try:
+            temp_dict = my_dict["props"]["pageProps"]["mainColumnData"]["countriesOfOrigin"]["countries"]
+            for i in range(len(temp_dict)):
+                temp_list.append(temp_dict[i]["text"])
+
+            self.countries = metadata["countries"] = temp_list
+            temp_dict = {}
+            temp_list = []
+        except KeyError:
+            self.countries = metadata["countries"] = []
+            pass
+
+        # Languages
+        try:
+            temp_dict = my_dict["props"]["pageProps"]["mainColumnData"]["spokenLanguages"]["spokenLanguages"]
+            for i in range(len(temp_dict)):
+                temp_list.append(temp_dict[i]["text"])
+
+            self.languages = metadata["languages"] = temp_list
+            temp_dict = {}
+            temp_list = []
+        except KeyError:
+            self.languages = metadata["languages"] = []
+            pass
+
+        # Filming Locations
+        try:
+            temp_dict = my_dict["props"]["pageProps"]["mainColumnData"]["filmingLocations"]["edges"]
+            for i in range(len(temp_dict)):
+                temp_list.append(temp_dict[i]["node"]["text"])
+
+            self.locations = metadata["locations"] = temp_list
+            temp_dict = {}
+            temp_list = []
+        except KeyError:
+            self.locations = metadata["locations"] = []
+            pass
+
         return metadata
     
     def format_runtime(self, seconds: int) -> str:
@@ -251,6 +290,9 @@ class IMDb_Scraper():
         print("Cast:", self.to_string(self.cast))
         print("Directed by:", self.to_string(self.directors))
         print("Writers:", self.to_string(self.writers))
+        print("Countries:", self.to_string(self.countries))
+        print("Filming Locations:", self.to_string(self.locations))
+        print("Languages", self.to_string(self.languages))
         print("Keywords:", self.to_string(self.keywords), "\n")
 
     def generate_webpage(self):
