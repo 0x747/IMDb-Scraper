@@ -1,4 +1,4 @@
-# IMDb Scraper
+# IMDb Scraper [BETA]
 A simple webscraper which can extract metadata from a movie or show's IMDb page
 
 ## Extracted Metadata 
