@@ -1,7 +1,7 @@
 # IMDb Scraper [BETA]
 A simple webscraper which can extract metadata from a movie or show's IMDb page
 
-## Getting Started 
+## Getting Started (main.py)
 **[ ! ] Before you begin**
 1. Make sure all files are in the same directory 
 2. Do not try to scrape multiple films in a short amount of time. IMDb will throttle your connection or ban your IP. Add a random time delay using `time.sleep()` as seen in `main.py` 
