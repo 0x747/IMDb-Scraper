@@ -339,3 +339,4 @@ class IMDb_Scraper():
         """
         html_file = open("index.html", "w")
         html_file.write(raw_html) 
+        html_file.close()
