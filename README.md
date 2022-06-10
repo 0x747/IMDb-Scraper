@@ -78,7 +78,7 @@ Converts seconds to equivalent hours and minutes and formats them into a string,
 ```
 format_runtime(5570)
 
-# Returns 
+# Returns a string
 > 1h 32m
 ```
 
@@ -91,7 +91,7 @@ Returns a formatted string from list
 my_list = ["spam", "eggs", "foo", "bar"]
 to_string(my_list)
 
-# Returns 
+# Returns a string
 > spam, eggs, foo, bar
 ```
 
