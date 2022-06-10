@@ -10,7 +10,9 @@ pip install requests
 ```
 
 3. Make sure all files are in the same directory 
-4. Do not try to scrape multiple films in a short amount of time. IMDb will throttle your connection or ban your IP. Add a random time delay using `time.sleep()` as shown in `main.py` 
+4. Do not try to scrape multiple films in a short amount of time. IMDb will throttle your connection or ban your IP. Add a random time delay using `time.sleep()` as shown in `main.py`
+
+## Usage
 ```
 # main.py
 import IMDbScraper
