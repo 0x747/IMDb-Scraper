@@ -142,7 +142,7 @@ class IMDb_Scraper():
         # Poster
         try:
             self.poster_url = metadata["poster_url"] = my_dict["props"]["pageProps"]["aboveTheFoldData"]["primaryImage"]["url"]
-        except KeyError:
+        except (TypeError, KeyError):
             self.poster_url = metadata["poster_url"] = ""
             pass
 
@@ -227,7 +227,7 @@ class IMDb_Scraper():
             self.countries = metadata["countries"] = temp_list
             temp_dict = {}
             temp_list = []
-        except KeyError:
+        except (TypeError, KeyError):
             self.countries = metadata["countries"] = []
             pass
 
@@ -240,7 +240,7 @@ class IMDb_Scraper():
             self.languages = metadata["languages"] = temp_list
             temp_dict = {}
             temp_list = []
-        except KeyError:
+        except (TypeError, KeyError):
             self.languages = metadata["languages"] = []
             pass
 
@@ -253,7 +253,7 @@ class IMDb_Scraper():
             self.locations = metadata["locations"] = temp_list
             temp_dict = {}
             temp_list = []
-        except KeyError:
+        except (TypeError, KeyError):
             self.locations = metadata["locations"] = []
             pass
 
@@ -261,11 +261,14 @@ class IMDb_Scraper():
     
     def format_runtime(self, seconds: int) -> str:
 
-        minutes = int(seconds / 60)
-        sub_minutes = int(minutes % 60)
-        hours = int((minutes - sub_minutes) / 60)
-
-        return str(hours) + "h " + str(sub_minutes) + "m"
+        try:
+            minutes = int(seconds / 60)
+            sub_minutes = int(minutes % 60)
+            hours = int((minutes - sub_minutes) / 60)
+            
+            return str(hours) + "h " + str(sub_minutes) + "m"
+        except TypeError:
+            pass
 
     def to_string(self, user_list: list) -> str:
 
@@ -293,54 +296,56 @@ class IMDb_Scraper():
         print("Writers:", self.to_string(self.writers))
         print("Countries:", self.to_string(self.countries))
         print("Filming Locations:", self.to_string(self.locations))
-        print("Languages", self.to_string(self.languages))
+        print("Languages:", self.to_string(self.languages))
         print("Keywords:", self.to_string(self.keywords), "\n")
 
     def generate_webpage(self):
 
-        raw_html = """
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" type="text/css" href="style.css">
-            <title>IMDb Scraper</title>
-        </head>
-        <body>
-            <div class="container">
-                <div class="poster" style="background-image: url("""+ self.poster_url +""");"></div>
-                <video src='"""+ self.trailer_url +"""' controls type="video/mp4" height="500px"></video>
-                <div class="information">
-                    <p id="title"><b>Name:</b> """+ self.title +"""</p>
-                    <p id=alttitle><b>Alternate Name:</b> """+ self.original_title +"""</p>
-                    <p id="type"><b>Type:</b> """+ self.title_type +"""</p>
-                    <p id="year"><b>Year:</b> """+ str(self.year) +"""</p>
-                    <p id="duration"><b>Duration:</b> """+ self.format_runtime(self.runtime) +"""</p>
-                    <p id="releasedate"><b>Release Date:</b> """+ self.date +"""</p>
-                    <p id="filmrating"><b>Age Rating:</b> """+ self.age_rating +"""</p>
-                    <p id="genre"><b>Genre:</b> """+ self.to_string(self.genre) +"""</p>
-                    <p id="actors"><b>Cast:</b> """+ self.to_string(self.cast) +"""</p>
-                    <p id="directors"><b>Directors:</b> """+ self.to_string(self.directors) +"""</p>
-                    <p id="writers"><b>Writers:</b> """+ self.to_string(self.writers) +"""</p>
-                    <p id="imdbrating"><b>IMDb Rating:</b> """+ str(self.imdb_rating) +""" / 10 ("""+ str(self.votes) +""" ratings)</p>
-                    <p id="plot"><b>Plot:</b> """+ self.plot +"""</p>
-                    <p id="keywords"><b>Keywords:</b> """+ self.to_string(self.keywords) +"""</p>
-                    <a href='"""+ self.poster_url +"""' target="_blank" download>
-                        <button class="posterdownload">Download Poster</button>
-                    </a>
-                    <a href='"""+ self.trailer_url +"""' target="_blank" download="Trailer">
-                        <button class="trailerdownload">Download Trailer</button>
-                    </a>
+        try:
+            raw_html = """
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link rel="stylesheet" type="text/css" href="style.css">
+                <title>IMDb Scraper</title>
+            </head>
+            <body>
+                <div class="container">
+                    <div class="poster" style="background-image: url("""+ self.poster_url +""");"></div>
+                    <video src='"""+ self.trailer_url +"""' controls type="video/mp4" height="500px"></video>
+                    <div class="information">
+                        <p id="title"><b>Name:</b> """+ self.title +"""</p>
+                        <p id=alttitle><b>Alternate Name:</b> """+ self.original_title +"""</p>
+                        <p id="type"><b>Type:</b> """+ self.title_type +"""</p>
+                        <p id="year"><b>Year:</b> """+ str(self.year) +"""</p>
+                        <p id="duration"><b>Duration:</b> """+ self.format_runtime(self.runtime) +"""</p>
+                        <p id="releasedate"><b>Release Date:</b> """+ self.date +"""</p>
+                        <p id="filmrating"><b>Age Rating:</b> """+ self.age_rating +"""</p>
+                        <p id="genre"><b>Genre:</b> """+ self.to_string(self.genre) +"""</p>
+                        <p id="actors"><b>Cast:</b> """+ self.to_string(self.cast) +"""</p>
+                        <p id="directors"><b>Directors:</b> """+ self.to_string(self.directors) +"""</p>
+                        <p id="writers"><b>Writers:</b> """+ self.to_string(self.writers) +"""</p>
+                        <p id="imdbrating"><b>IMDb Rating:</b> """+ str(self.imdb_rating) +""" / 10 ("""+ str(self.votes) +""" ratings)</p>
+                        <p id="plot"><b>Plot:</b> """+ self.plot +"""</p>
+                        <p id="keywords"><b>Keywords:</b> """+ self.to_string(self.keywords) +"""</p>
+                        <a href='"""+ self.poster_url +"""' target="_blank" download>
+                            <button class="posterdownload">Download Poster</button>
+                        </a>
+                        <a href='"""+ self.trailer_url +"""' target="_blank" download="Trailer">
+                            <button class="trailerdownload">Download Trailer</button>
+                        </a>
+                    </div>
                 </div>
-            </div>
-        </body>
-        </html>
-        """
-
-        dirname = os.path.dirname(__file__)
-        filename = os.path.join(dirname, './webpage/index.html')
-        html_file = open(filename, "w")
-        html_file.write(raw_html)
-        html_file.close() 
+            </body>
+            </html>
+            """
+            dirname = os.path.dirname(__file__)
+            filename = os.path.join(dirname, './webpage/index.html')
+            html_file = open(filename, "w")
+            html_file.write(raw_html)
+            html_file.close() 
+        except (UnboundLocalError, TypeError):
+            pass
