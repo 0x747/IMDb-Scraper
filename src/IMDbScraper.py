@@ -23,7 +23,7 @@ class IMDb_Scraper():
             user_input = user_input.replace(" ", "+")
 
             # Google search query URL
-            google_url = "https://www.google.com/search?q=" + user_input + "+site%3Aimdb.com"
+            google_url = "https://www.google.com/search?q=" + user_input + "+IMDb"
             print(google_url)
             # Fetches the HTML code of the google search
             temp = requests.get(google_url)
