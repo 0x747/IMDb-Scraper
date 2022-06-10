@@ -63,10 +63,11 @@ movie.scrape("https://www.imdb.com/title/tt5108870/?ref_=fn_al_tt_1")
 | directors      | list        |
 | writers        | list        |
 | keywords       | list        |
-| countries      | list        |
-| languages      | list        |
-| locations      | list        |
+| countries*     | list        |
+| languages*     | list        |
+| locations*     | list        |
 
+**results may not be 100% accurate*
 ## Functions
 
 ### 1. scrape(str)
