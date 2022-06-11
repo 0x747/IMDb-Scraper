@@ -10,7 +10,7 @@ A simple webscraper which can extract metadata from a movie or show's IMDb page
 ## Getting Started (main.py) <a name="Requirements"></a>
 **[ ! ] Before you begin**
 1. Install required dependencies
-```
+``` 
 pip install beautifulsoup4
 pip install requests
 ```
@@ -21,7 +21,7 @@ pip install requests
 ## Usage <a name="Usage"></a>
 
 Run the included `main.py` file or create your own instance 
-```
+```python
 # main.py
 import IMDbScraper
 
@@ -33,17 +33,17 @@ movie.scrape("Morbius")
 movie.scrape("https://www.imdb.com/title/tt5108870/?ref_=fn_al_tt_1")
 
 # Output
-> Title: Morbius
-> Type: Movie
-> Year: 2022
-> Runtime: 1h 44m
-> Date:  April 1, 2022
-> Age Rating: PG-13
-> Genre: Action, Adventure, Horror, Sci-Fi, Thriller
-> Cast: Jared Leto, Matt Smith, Adria Arjona, Jared Harris
-> Directed by: Daniel Espinosa
-> Writers: Matt Sazama, Burk Sharpless
-> Keywords: vampire, based on comic, marvel comics, superhero, blood
+# Title: Morbius
+# Type: Movie
+# Year: 2022
+# Runtime: 1h 44m
+# Date:  April 1, 2022
+# Age Rating: PG-13
+# Genre: Action, Adventure, Horror, Sci-Fi, Thriller
+# Cast: Jared Leto, Matt Smith, Adria Arjona, Jared Harris
+# Directed by: Daniel Espinosa
+# Writers: Matt Sazama, Burk Sharpless
+# Keywords: vampire, based on comic, marvel comics, superhero, blood
 ```
 
 ![Command Line Interface](/assets/console.jpg "Terminal")
@@ -87,11 +87,11 @@ Takes the name of a movie/show or an IMDb title page URL (https://www.imdb.com/t
 
 ### 2. format_runtime(int)
 Converts seconds to equivalent hours and minutes and formats them into a string, which is returned.
-```
+```python
 format_runtime(5570)
 
 # Returns a string
-> 1h 32m
+# 1h 32m
 ```
 
 ### 3. print_metadata()
@@ -99,12 +99,12 @@ Prints the metadata in a readable format
 
 ### 4. to_string(list)
 Returns a formatted string from list
-```
+```python
 my_list = ["spam", "eggs", "foo", "bar"]
 to_string(my_list)
 
 # Returns a string
-> spam, eggs, foo, bar
+# spam, eggs, foo, bar
 ```
 
 ### 5. generate_webpage() 
