@@ -1,7 +1,13 @@
 # IMDb Scraper [BETA]
 A simple webscraper which can extract metadata from a movie or show's IMDb page
 
-## Getting Started (main.py)
+## Table of Contents:
+**[Requirements](#Requirements)**<br>
+**[How to Run Program](#Usage)**<br>
+**[Metadata Attributes](#Atrributes)**<br>
+**[Built-in Functions](#Functions)**
+
+## Getting Started (main.py) <a name="Requirements"></a>
 **[ ! ] Before you begin**
 1. Install required dependencies
 ```
@@ -12,7 +18,9 @@ pip install requests
 3. Make sure all files are in the same directory 
 4. Do not try to scrape multiple films in a short amount of time. IMDb will throttle your connection or ban your IP. Add a random time delay using `time.sleep()` as shown in `main.py`
 
-## Usage
+## Usage <a name="Usage"></a>
+
+Run the included `main.py` file or create your own instance 
 ```
 # main.py
 import IMDbScraper
@@ -40,7 +48,8 @@ movie.scrape("https://www.imdb.com/title/tt5108870/?ref_=fn_al_tt_1")
 
 ![Command Line Interface](/assets/console.jpg "Terminal")
 ![Generated Webpage](/assets/webpage.PNG "Webpage")
-## Attributes
+
+## Attributes <a name="Atrributes"></a>
 
 |  **Attribute** |**Data type**|
 |:-------------- |:-----------:|
@@ -70,7 +79,8 @@ movie.scrape("https://www.imdb.com/title/tt5108870/?ref_=fn_al_tt_1")
 | locations*     | list        |
 
 **results may not be 100% accurate*
-## Functions
+
+## Functions <a name="Functions"></a>
 
 ### 1. scrape(str)
 Takes the name of a movie/show or an IMDb title page URL (https://www.imdb.com/title/tt0111161). Returns a dictionary with all extracted metadata.
