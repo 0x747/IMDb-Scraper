@@ -272,13 +272,7 @@ class IMDb_Scraper():
 
     def to_string(self, user_list: list) -> str:
 
-        bad_chars = "[']"
-        string = str(user_list)
-
-        for char in bad_chars:
-            string = string.replace(char, "")
-        
-        return string
+        return " ".join(user_list)
 
     def print_metadata(self):
 
