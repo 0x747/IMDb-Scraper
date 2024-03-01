@@ -26,11 +26,11 @@ Run the included `main.py` file or create your own instance
 import IMDbScraper
 
 # Create an instance 
-movie = IMDbScraper.IMDb_Scraper()
+scraper = IMDbScraper.IMDb_Scraper()
 
 # Start scraping
-movie.scrape("Morbius")
-movie.scrape("https://www.imdb.com/title/tt5108870/?ref_=fn_al_tt_1")
+scraper.scrape("Morbius")
+scraper.scrape("https://www.imdb.com/title/tt5108870/?ref_=fn_al_tt_1")
 
 # Output
 # Title: Morbius
